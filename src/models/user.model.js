@@ -18,4 +18,4 @@ const selectByEmail = async (email) => {
 
 
 
-module.exports = { createUser };
+module.exports = { createUser, selectByEmail };
