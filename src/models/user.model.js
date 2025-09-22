@@ -17,5 +17,9 @@ const selectByEmail = async (email) => {
 };
 
 
-
-module.exports = { createUser, selectByEmail };
+const selectById = async (id) => {
+  const select = "SELECT * FROM user WHERE id = ?";
+  const [result] = await pool.query(select, [id]);
+  return result[0];
+}
+module.exports = { createUser, selectByEmail, selectById };

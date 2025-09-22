@@ -7,4 +7,3 @@ router.post("/login", userControllers.loginUser);
 router.get("/profile", auth.checkToken, userControllers.getUserProfile);
 
 module.exports = router;
-    
