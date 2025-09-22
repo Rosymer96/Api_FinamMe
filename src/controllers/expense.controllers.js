@@ -24,6 +24,12 @@ const addExpense = async (req, res) => {
 const editExpense = async (req, res) => {
   try {
     const { id } = req.params;
+
+    const expenseExist = await expenseModel.selectById(id);
+    if (!expenseExist) {
+      return res.status(404).json({ error: "Gasto no encontrado" });
+    }
+
     const { amount, category, description } = req.body;
     if (!amount || !category || !description) {
       return res

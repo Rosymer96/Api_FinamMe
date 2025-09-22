@@ -15,6 +15,14 @@ const createExpense = async (amount, userId, category, description) => {
   return result;
 };
 
+//Seleccionar por id
+
+const selectById = async (id) => {
+  const select = "SELECT * FROM expense WHERE id = ?";
+  const [result] = await pool.query(select, [id]);
+  return result[0];
+}
+
 //Editar gasto
 const editExpense = async (id, amount, category, description) => {
   const update =
@@ -38,7 +46,7 @@ const deleteExpense = async (id) => {
 
 //Listar gastos por usuario en orden descendente por fecha
 const listExpensesByUser = async (userId) => {
-  const select = "SELECT * FROM expense WHERE userId = ? ORDER BY date DESC";
+  const select = "SELECT * FROM expense WHERE userId = ? ORDER BY createdAt DESC";
   const [result] = await pool.query(select, [userId]);
   return result;
 }
@@ -47,5 +55,6 @@ module.exports = {
   createExpense,
   editExpense,
   deleteExpense,
-  listExpensesByUser
+  listExpensesByUser,
+  selectById
 };
