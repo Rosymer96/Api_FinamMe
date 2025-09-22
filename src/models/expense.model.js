@@ -36,9 +36,9 @@ const deleteExpense = async (id) => {
   return result;
 };
 
-//Listar gastos por usuario
+//Listar gastos por usuario en orden descendente por fecha
 const listExpensesByUser = async (userId) => {
-  const select = "SELECT * FROM expense WHERE userId = ?";
+  const select = "SELECT * FROM expense WHERE userId = ? ORDER BY date DESC";
   const [result] = await pool.query(select, [userId]);
   return result;
 }
