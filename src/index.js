@@ -5,6 +5,7 @@ const cors = require("cors");
 const server = express();
 const PORT = 3500;
 
+server.use(cors());
 server.use(express.json());
 
 require("dotenv").config();
